@@ -14,6 +14,7 @@ const Dashboard = () => {
       <Button type="button" variant="contained" onClick={handleOpenModal}>
         Open Modal
       </Button>
+
       <Modal open={openModal} handleClose={handleClose} title={'Modal Title'}>
         <Box
           sx={{
