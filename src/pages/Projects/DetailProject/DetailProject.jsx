@@ -2,6 +2,7 @@ import { Settings } from '@mui/icons-material';
 import { Stack } from '@mui/material';
 
 import Dropdwon from '../../../components/ui/Dropdown';
+import Avatar from '../../../components/ui/Avatar';
 
 const DetailProject = () => {
   return (
@@ -13,6 +14,12 @@ const DetailProject = () => {
       justifyContent={'center'}
       alignItems={'center'}
     >
+      <Avatar
+        text={'Joko Widodo'}
+        onClick={() => {
+          console.log('handle click avatar');
+        }}
+      />
       <Dropdwon
         icon={<Settings />}
         options={[
