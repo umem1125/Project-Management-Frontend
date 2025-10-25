@@ -1,17 +1,27 @@
 import { Paper, Stack } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import Select from '../../../components/ui/Select';
-import TextField from '../../../components/ui/TextField';
+import DatePicker from '../../../components/ui/Forms/DatePicker/DatePicker';
+import Select from '../../../components/ui/Forms/Select';
+import TextField from '../../../components/ui/Forms/TextField';
+import dayjs from 'dayjs';
 
 const Login = () => {
-  const { control, watch } = useForm();
+  const { control, watch } = useForm({
+    defaultValues: {
+      filterDate: dayjs(),
+      username: 'joko',
+      category: 'Kategori 1',
+    },
+  });
 
   const username = watch('username');
   const category = watch('category');
+  const filterDate = watch('filterDate');
 
   console.log('username:', username);
   console.log('category:', category);
+  console.log('filterDate:', filterDate);
 
   return (
     <Stack
@@ -21,11 +31,12 @@ const Login = () => {
       sx={{ height: '100vh' }}
     >
       <Paper sx={{ width: 600, padding: 2 }}>
+        <DatePicker name="filterDate" control={control} label="Choose Date" />
         <TextField name="username" control={control} label={'Username'} />
         <Select
           name={'category'}
           control={control}
-          label={'Pilih Kategori'}
+          label={'Choose Category'}
           options={[
             {
               label: 'Kategori 1',

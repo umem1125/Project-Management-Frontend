@@ -25,6 +25,7 @@ const TextField = ({
               value={value}
               onBlur={onBlur}
               onChange={onChange}
+              helperText={helperText}
             />
           </Box>
         );
