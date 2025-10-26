@@ -1,43 +1,30 @@
-import { Settings } from '@mui/icons-material';
-import { Stack } from '@mui/material';
+import { colors, Paper, Typography } from '@mui/material';
 
-import Dropdwon from '../../../components/ui/Dropdown';
-import Avatar from '../../../components/ui/Avatar';
+import SidebarLayout from '../../../components/layouts/SidebarLayout';
 
 const DetailProject = () => {
   return (
-    <Stack
-      sx={{
-        height: '100vh',
-        width: '100%',
-      }}
-      justifyContent={'center'}
-      alignItems={'center'}
+    <SidebarLayout
+      pageTitle="Detail Project"
+      breadcrumbs={[
+        {
+          label: 'Daftar Project',
+          href: '/projects',
+        },
+        {
+          label: 'Joko Widodo Adilit',
+        },
+      ]}
     >
-      <Avatar
-        text={'Joko Widodo'}
-        onClick={() => {
-          console.log('handle click avatar');
+      <Paper
+        sx={{
+          padding: 2,
+          background: colors.lightBlue[100],
         }}
-      />
-      <Dropdwon
-        icon={<Settings />}
-        options={[
-          {
-            label: 'Closed this project',
-            onClick: () => {
-              console.log('handle close project');
-            },
-          },
-          {
-            label: 'Edit Deadline',
-            onClick: () => {
-              console.log('handle update deadline project');
-            },
-          },
-        ]}
-      />
-    </Stack>
+      >
+        <Typography>Menampilkan detail project disini</Typography>
+      </Paper>
+    </SidebarLayout>
   );
 };
 
