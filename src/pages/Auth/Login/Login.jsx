@@ -1,21 +1,32 @@
 import { Button, Paper, Stack, Typography } from '@mui/material';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 
 import AuthLayout from '../AuthLayout/AuthLayout';
 
 import TextField from '@/components/ui/Forms/TextField';
+import services from '@/services';
 import session from '@/utils/session';
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
+
   const navigate = useNavigate();
 
   const { control, handleSubmit } = useForm();
 
-  const onSubmit = (data) => {
-    console.log('Login data: ', data);
-    session.setSession('dummy-token');
-    navigate('/');
+  const onSubmit = async (formValues) => {
+    setLoading(true);
+    try {
+      const response = await services.auth.login(formValues);
+      session.setSession(response.data.data.access_token);
+      navigate('/');
+    } catch (error) {
+      console.error('Login failed', error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
